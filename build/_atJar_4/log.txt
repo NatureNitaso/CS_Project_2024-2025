@@ -1,0 +1,7 @@
+Java Launcher: C:\Users\xhuan\.jdks\temurin-17.0.13\bin\java.exe
+Arguments: '--inJar, C:\Users\xhuan\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.4-45.3.0\forge-1.19.4-45.3.0-injected.jar, --outJar, C:\Users\xhuan\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.4-45.3.0_mapped_official_1.19.4\forge-1.19.4-45.3.0_mapped_official_1.19.4.jar, --logFile, accesstransform.log, --atFile, C:\Users\xhuan\Downloads\Coding\Zihui_Programming\CS-Project\CS_Project_2024-2025_Minecraft_Mod\CS_Project_2024-2025\build\_atJar_4\parent_at.cfg'
+Classpath:
+ - C:\Users\xhuan\.gradle\caches\forge_gradle\maven_downloader\net\minecraftforge\accesstransformers\8.2.0\accesstransformers-8.2.0-fatjar.jar
+Working directory: C:\Users\xhuan\Downloads\Coding\Zihui_Programming\CS-Project\CS_Project_2024-2025_Minecraft_Mod\CS_Project_2024-2025\build\_atJar_4
+Main class: net.minecraftforge.accesstransformer.TransformerProcessor
+====================================
