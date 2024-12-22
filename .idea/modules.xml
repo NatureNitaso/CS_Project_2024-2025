@@ -4,6 +4,8 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CS_Project_2024-2025.main.iml" filepath="$PROJECT_DIR$/.idea/modules/CS_Project_2024-2025.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/CS_Project_2024-2025.test.iml" filepath="$PROJECT_DIR$/.idea/modules/CS_Project_2024-2025.test.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.email.zihuilei001.CS_Project_2024-2025.main.iml" filepath="$PROJECT_DIR$/.idea/modules/com.email.zihuilei001.CS_Project_2024-2025.main.iml" />
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/com.email.zihuilei001.CS_Project_2024-2025.test.iml" filepath="$PROJECT_DIR$/.idea/modules/com.email.zihuilei001.CS_Project_2024-2025.test.iml" />
     </modules>
   </component>
 </project>
