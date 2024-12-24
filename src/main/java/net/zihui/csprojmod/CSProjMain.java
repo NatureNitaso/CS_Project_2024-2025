@@ -10,6 +10,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.zihui.csprojmod.entity.ModEntities;
+import net.zihui.csprojmod.entity.client.ShipwreckCaptainRenderer;
 import net.zihui.csprojmod.entity.client.TigerRenderer;
 import net.zihui.csprojmod.init.ModCreativeTabs;
 import net.zihui.csprojmod.items.ModItems;
@@ -53,6 +54,7 @@ public class CSProjMain {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
+            EntityRenderers.register(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainRenderer::new);
 
         }
     }
