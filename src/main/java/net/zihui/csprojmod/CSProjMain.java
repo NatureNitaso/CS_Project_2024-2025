@@ -2,6 +2,7 @@ package net.zihui.csprojmod;
 
 // imports up here //
 import com.mojang.logging.LogUtils;
+import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
@@ -9,7 +10,10 @@ import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
+import net.zihui.csprojmod.blocks.ModBlocks;
+import net.zihui.csprojmod.entity.ModBlockEntities;
 import net.zihui.csprojmod.entity.ModEntities;
+import net.zihui.csprojmod.entity.client.AnimatedBlockRenderer;
 import net.zihui.csprojmod.entity.client.ShipwreckCaptainRenderer;
 import net.zihui.csprojmod.entity.client.TigerRenderer;
 import net.zihui.csprojmod.init.ModCreativeTabs;
@@ -18,6 +22,7 @@ import org.slf4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
+import software.bernie.geckolib.GeckoLib;
 
 @Mod(CSProjMain.MOD_ID)
 public class CSProjMain {
@@ -29,6 +34,7 @@ public class CSProjMain {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::setup);
+        GeckoLib.initialize();
 
         MinecraftForge.EVENT_BUS.register(this);
 
@@ -36,9 +42,10 @@ public class CSProjMain {
         // Calls to ModItems to register the items within there
         ModItems.ITEMS.register(modEventBus);
         // Calls to ModBlocks to register the blocks made there
-//        ModBlocks.BLOCKS.register(modEventBus);
+        ModBlocks.BLOCKS.register(modEventBus);
         //Why I was having errors before winter break:
         ModEntities.register(modEventBus);
+        ModBlockEntities.register(modEventBus);
         modEventBus.addListener(this::addCreative);
 
 
@@ -55,6 +62,7 @@ public class CSProjMain {
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
             EntityRenderers.register(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainRenderer::new);
+            BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
 
         }
     }
@@ -63,6 +71,8 @@ public class CSProjMain {
         if (event.getTab() == ModCreativeTabs.CSPROJ_MOD) {
             event.accept(ModItems.CRACK);
             event.accept(ModItems.TESTOBJ);
+            event.accept(ModItems.ANIMATED_BLOCK_ITEM);
+
 
 
         }

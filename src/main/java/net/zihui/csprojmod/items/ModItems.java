@@ -12,7 +12,9 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.blocks.ModBlocks;
 import net.zihui.csprojmod.init.ModCreativeTabs;
+import net.zihui.csprojmod.items.custom.AnimatedBlockItem;
 
 public class ModItems {
     // Sets up register for deferred register method
@@ -33,6 +35,9 @@ public class ModItems {
                                             (MobEffects.DAMAGE_BOOST, 1200, 3), 1F).
                             effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 1500, 2),1F).
                             effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1500, 3),1F).build()))); // Initiates the process of making this item
+
+    public static final RegistryObject<Item> ANIMATED_BLOCK_ITEM = ITEMS.register("animated_block",
+            () -> new AnimatedBlockItem(ModBlocks.ANIMATED_BLOCK.get(), new Item.Properties())) ;
 
 
 

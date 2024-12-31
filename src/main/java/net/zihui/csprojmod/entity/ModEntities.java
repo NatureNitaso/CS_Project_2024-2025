@@ -27,6 +27,7 @@ public class ModEntities {
                             .sized(1.0f, 1.25f)
                             .build(new ResourceLocation(CSProjMain.MOD_ID, "shipwreck_captain")
                                     .toString()));
+
     public static void register (IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);
     }
