@@ -1,6 +1,7 @@
 package net.zihui.csprojmod.entity;
 
 import net.minecraft.resources.ResourceLocation;
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -8,6 +9,7 @@ import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.entity.custom.IronLeeEntity;
 import net.zihui.csprojmod.entity.custom.TigerEntity;
 import net.zihui.csprojmod.entity.custom.ShipwreckCaptainEntity;
 
@@ -26,6 +28,13 @@ public class ModEntities {
                     () -> EntityType.Builder.of(ShipwreckCaptainEntity::new, MobCategory.MONSTER)
                             .sized(1.0f, 1.25f)
                             .build(new ResourceLocation(CSProjMain.MOD_ID, "shipwreck_captain")
+                                    .toString()));
+
+    public static final RegistryObject<EntityType<IronLeeEntity>> IRON_LEE =
+            ENTITY_TYPES.register("iron_lee",
+                    () -> EntityType.Builder.of(IronLeeEntity::new, MobCategory.MISC)
+                            .sized(1.0f, 1.5f)
+                            .build(new ResourceLocation(CSProjMain.MOD_ID, "iron_lee")
                                     .toString()));
 
     public static void register (IEventBus eventBus) {

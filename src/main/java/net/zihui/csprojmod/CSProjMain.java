@@ -14,6 +14,7 @@ import net.zihui.csprojmod.blocks.ModBlocks;
 import net.zihui.csprojmod.entity.ModBlockEntities;
 import net.zihui.csprojmod.entity.ModEntities;
 import net.zihui.csprojmod.entity.client.AnimatedBlockRenderer;
+import net.zihui.csprojmod.entity.client.IronLeeRenderer;
 import net.zihui.csprojmod.entity.client.ShipwreckCaptainRenderer;
 import net.zihui.csprojmod.entity.client.TigerRenderer;
 import net.zihui.csprojmod.init.ModCreativeTabs;
@@ -61,6 +62,7 @@ public class CSProjMain {
         @SubscribeEvent
         public static void onClientSetup(FMLClientSetupEvent event) {
             EntityRenderers.register(ModEntities.TIGER.get(), TigerRenderer::new);
+            EntityRenderers.register(ModEntities.IRON_LEE.get(), IronLeeRenderer::new);
             EntityRenderers.register(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
 
