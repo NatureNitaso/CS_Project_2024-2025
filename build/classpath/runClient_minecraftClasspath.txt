@@ -1,4 +1,4 @@
-C:\Users\xhuan\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.4-45.3.0_mapped_official_1.19.4\forge-1.19.4-45.3.0_mapped_official_1.19.4.jar
+C:\Users\xhuan\.gradle\caches\forge_gradle\minecraft_user_repo\net\minecraftforge\forge\1.19.4-45.3.0_mapped_official_1.19.4\forge-1.19.4-45.3.0_mapped_official_1.19.4-recomp.jar
 C:\Users\xhuan\.gradle\caches\forge_gradle\minecraft_repo\versions\1.19.4\client-extra.jar
 C:\Users\xhuan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\javafmllanguage\1.19.4-45.3.0\764616c79ed3e3def47acb8261877a186744247c\javafmllanguage-1.19.4-45.3.0.jar
 C:\Users\xhuan\.gradle\caches\modules-2\files-2.1\net.minecraftforge\lowcodelanguage\1.19.4-45.3.0\dcba60f8ba0b45885b77bc379d111d768df0bd66\lowcodelanguage-1.19.4-45.3.0.jar
