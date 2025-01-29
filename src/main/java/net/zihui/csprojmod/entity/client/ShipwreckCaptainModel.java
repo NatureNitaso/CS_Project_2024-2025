@@ -8,7 +8,7 @@ import software.bernie.geckolib.model.GeoModel;
 public class ShipwreckCaptainModel extends GeoModel<ShipwreckCaptainEntity> {
     @Override
     public ResourceLocation getModelResource(ShipwreckCaptainEntity shipwreckCaptainEntity) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "geo/shipwreck_captain.geo.json");
+            return new ResourceLocation(CSProjMain.MOD_ID, "geo/shipwreck_captain.geo.json");
     }
 
     @Override

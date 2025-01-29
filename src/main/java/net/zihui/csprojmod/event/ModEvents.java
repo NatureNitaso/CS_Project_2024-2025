@@ -5,9 +5,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
 import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.entity.ModEntities;
-import net.zihui.csprojmod.entity.custom.IronLeeEntity;
-import net.zihui.csprojmod.entity.custom.ShipwreckCaptainEntity;
-import net.zihui.csprojmod.entity.custom.TigerEntity;
+import net.zihui.csprojmod.entity.custom.*;
 
 @Mod.EventBusSubscriber(modid = CSProjMain.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {
@@ -18,5 +16,6 @@ public class ModEvents {
         event.put(ModEntities.TIGER.get(), TigerEntity.setAttributes());
         event.put(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainEntity.setAttributes());
         event.put(ModEntities.IRON_LEE.get(), IronLeeEntity.setAttributes());
+        event.put(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionEntity.setAttributes());
     }
 }
