@@ -7,16 +7,18 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
-import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.blocks.ModBlocks;
-import net.zihui.csprojmod.entity.ModEntities;
+<<<<<<< Updated upstream
 import net.zihui.csprojmod.init.ModCreativeTabs;
 import net.zihui.csprojmod.items.custom.AnimatedBlockItem;
+=======
+import net.zihui.csprojmod.entity.ModEntities;
+>>>>>>> Stashed changes
 
 public class ModItems {
     // Sets up register for deferred register method
@@ -38,11 +40,15 @@ public class ModItems {
                             effect(() -> new MobEffectInstance(MobEffects.BLINDNESS, 1500, 2),1F).
                             effect(() -> new MobEffectInstance(MobEffects.MOVEMENT_SLOWDOWN, 1500, 3),1F).build()))); // Initiates the process of making this item
 
-    public static final RegistryObject<Item> ANIMATED_BLOCK_ITEM = ITEMS.register("animated_block",
-            () -> new AnimatedBlockItem(ModBlocks.ANIMATED_BLOCK.get(), new Item.Properties())) ;
 
-    public static final RegistryObject<Item> TIGER_SPAWN_EGG = ITEMS.register("tiger_spawn_egg",
-            () -> new ForgeSpawnEggItem(ModEntities.TIGER, 0xD57E36, 0x1D0D00,
+
+
+    public static final RegistryObject<Item> IRON_LEE_SPAWN_EGG = ITEMS.register("iron_lee_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.IRON_LEE, 0xD2BCAA, 0x658932,
+                    new Item.Properties()));
+
+    public static final RegistryObject<Item> IRON_SLYTHER_SPAWN_EGG = ITEMS.register("iron_slyther_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.IRON_SLYTHER, 0xD2BCAA, 0x837432,
                     new Item.Properties()));
 
     // Registers all items in the Deferred Register to the Forge directory
