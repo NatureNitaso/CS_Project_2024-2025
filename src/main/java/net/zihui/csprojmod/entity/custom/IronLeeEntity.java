@@ -39,52 +39,55 @@ public class IronLeeEntity extends IronGolem implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this, "controller",
                 0, this::predicate));
+        controllerRegistrar.add(new AnimationController<>(this, "attackController",
+                0, this::attackPredicate));
     }
 
-    @Override
-    public boolean doHurtTarget(@NotNull Entity target) {
-        boolean flag = super.doHurtTarget(target);
-
-        if (flag) {
-            this.swing(InteractionHand.MAIN_HAND, true);
-        }
-
-        return flag;
-    }
-
-        private <T extends GeoAnimatable> PlayState predicate(AnimationState<IronLeeEntity> ironLeeEntityAnimationState) {
-            if (this.swinging && ironLeeEntityAnimationState.getController().hasAnimationFinished())
-            {
-                ironLeeEntityAnimationState.getController().setAnimation(RawAnimation.begin().then
-                        ("animation.iron_lee.slap", Animation.LoopType.PLAY_ONCE));
-                this.swinging = false;
-                return PlayState.CONTINUE;
-            }
-        if(ironLeeEntityAnimationState.isMoving())
+    private PlayState predicate(AnimationState<IronLeeEntity> state) {
+        if(state.isMoving())
         {
-            ironLeeEntityAnimationState.setAnimation(RawAnimation.begin().then
+            state.setAnimation(RawAnimation.begin().then
                     ("animation.iron_lee.walk", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        ironLeeEntityAnimationState.setAnimation(RawAnimation.begin().then
+        state.setAnimation(RawAnimation.begin().then
                 ("animation.iron_lee.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
-
     }
+
+    private PlayState attackPredicate(AnimationState<IronLeeEntity> state) {
+            if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
+                state.getController().setAnimation(RawAnimation.begin().then
+                        ("animation.iron_lee.slap", Animation.LoopType.PLAY_ONCE));
+                this.swinging = false;
+            }
+            return PlayState.CONTINUE;
+        }
 
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
 
-    @Override
-    public void swing(@NotNull InteractionHand hand, boolean b) {
-        super.swing(hand, b);
-        this.swinging = true;
-    }
 
     @Override
     public float getAttackAnim(float p_21325_) {
         return super.getAttackAnim(p_21325_);
+    }
+
+    @Override
+    public void swing(InteractionHand hand, boolean b) {
+        super.swing(hand, b);
+    }
+
+    @Override
+    public void tick() {
+        super.tick();
+
+    }
+
+    @Override
+    protected void updateSwingTime() {
+        super.updateSwingTime();
     }
 }

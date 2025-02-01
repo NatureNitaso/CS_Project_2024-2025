@@ -72,6 +72,7 @@ public class CSProjMain {
             event.accept(ModItems.CRACK);
             event.accept(ModItems.TESTOBJ);
             event.accept(ModItems.ANIMATED_BLOCK_ITEM);
+            event.accept(ModItems.TIGER_SPAWN_EGG);
 
 
 
