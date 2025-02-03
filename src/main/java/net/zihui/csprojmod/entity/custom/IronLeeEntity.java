@@ -57,6 +57,7 @@ public class IronLeeEntity extends IronGolem implements GeoEntity {
 
     private PlayState attackPredicate(AnimationState<IronLeeEntity> state) {
             if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED)) {
+                state.getController().forceAnimationReset();
                 state.getController().setAnimation(RawAnimation.begin().then
                         ("animation.iron_lee.slap", Animation.LoopType.PLAY_ONCE));
                 this.swinging = false;
