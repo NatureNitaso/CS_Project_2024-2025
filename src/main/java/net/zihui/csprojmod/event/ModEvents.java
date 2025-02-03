@@ -6,6 +6,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.entity.ModEntities;
 import net.zihui.csprojmod.entity.custom.*;
+import net.zihui.csprojmod.entity.custom.stash.DrownedChampionEntity;
+import net.zihui.csprojmod.entity.custom.stash.ShipwreckCaptainEntity;
 
 @Mod.EventBusSubscriber(modid = CSProjMain.MOD_ID, bus = Mod.EventBusSubscriber.Bus.MOD)
 public class ModEvents {

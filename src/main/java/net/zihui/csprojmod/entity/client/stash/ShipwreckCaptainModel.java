@@ -1,8 +1,8 @@
-package net.zihui.csprojmod.entity.client;
+package net.zihui.csprojmod.entity.client.stash;
 
 import net.minecraft.resources.ResourceLocation;
 import net.zihui.csprojmod.CSProjMain;
-import net.zihui.csprojmod.entity.custom.ShipwreckCaptainEntity;
+import net.zihui.csprojmod.entity.custom.stash.ShipwreckCaptainEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class ShipwreckCaptainModel extends GeoModel<ShipwreckCaptainEntity> {

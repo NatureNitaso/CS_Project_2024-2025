@@ -1,8 +1,7 @@
-package net.zihui.csprojmod.entity.client;
+package net.zihui.csprojmod.entity.client.stash;
 
 import net.minecraft.client.renderer.blockentity.BlockEntityRendererProvider;
-import net.zihui.csprojmod.entity.custom.AnimatedBlockEntity;
-import software.bernie.geckolib.model.GeoModel;
+import net.zihui.csprojmod.entity.custom.stash.AnimatedBlockEntity;
 import software.bernie.geckolib.renderer.GeoBlockRenderer;
 
 public class AnimatedBlockRenderer extends GeoBlockRenderer<AnimatedBlockEntity> {
