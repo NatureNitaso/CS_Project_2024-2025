@@ -1,22 +1,26 @@
 package net.zihui.csprojmod.entity.custom;
 
+import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.animal.IronGolem;
 import net.minecraft.world.level.Level;
+import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
-public class IronSlytherEntity extends IronGolem implements GeoAnimatable {
+public class IronSlytherEntity extends IronGolem implements GeoEntity {
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
 
     public IronSlytherEntity(EntityType<? extends IronGolem> entityType, Level level) {
         super(entityType, level);
+        super.registerGoals();
+
     }
 
     public static AttributeSupplier setAttributes()
@@ -25,9 +29,10 @@ public class IronSlytherEntity extends IronGolem implements GeoAnimatable {
                 .add(Attributes.MAX_HEALTH, 120)
                 .add(Attributes.ARMOR, 10)
                 .add(Attributes.ARMOR_TOUGHNESS, 5)
-                .add(Attributes.ATTACK_KNOCKBACK, 20)
-                .add(Attributes.ATTACK_SPEED, 0.01)
+                .add(Attributes.ATTACK_KNOCKBACK, 200)
+                .add(Attributes.ATTACK_SPEED, 0.01f)
                 .add(Attributes.ATTACK_DAMAGE, 5)
+                .add(Attributes.MOVEMENT_SPEED, 0.05f)
                 .build();
     }
 
@@ -44,21 +49,21 @@ public class IronSlytherEntity extends IronGolem implements GeoAnimatable {
         if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED))
         {
             state.getController().forceAnimationReset();
-            state.getController().setAnimation(RawAnimation.begin().then
+            state.setAnimation(RawAnimation.begin().then
                     ("animation.iron_slyther.smash", Animation.LoopType.PLAY_ONCE));
             this.swinging = false;
         }
         return PlayState.CONTINUE;
     }
 
-    private <T extends GeoAnimatable> PlayState predicate(AnimationState<IronSlytherEntity> state) {
+    private PlayState predicate(AnimationState<IronSlytherEntity> state) {
         if (state.isMoving())
         {
-            state.getController().setAnimation(RawAnimation.begin().then
+            state.setAnimation(RawAnimation.begin().then
                     ("animation.iron_slyther.move", Animation.LoopType.LOOP));
             return PlayState.CONTINUE;
         }
-        state.getController().setAnimation(RawAnimation.begin().then
+        state.setAnimation(RawAnimation.begin().then
                 ("animation.iron_slyther.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
     }
@@ -67,9 +72,5 @@ public class IronSlytherEntity extends IronGolem implements GeoAnimatable {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
-
-    @Override
-    public double getTick(Object o) {
-        return 0;
-    }
+    
 }
