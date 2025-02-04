@@ -1,6 +1,5 @@
 package net.zihui.csprojmod.entity;
 
-import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.entity.BlockEntityType;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -8,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.blocks.ModBlocks;
-import net.zihui.csprojmod.entity.custom.AnimatedBlockEntity;
+import net.zihui.csprojmod.entity.custom.stash.AnimatedBlockEntity;
 
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =

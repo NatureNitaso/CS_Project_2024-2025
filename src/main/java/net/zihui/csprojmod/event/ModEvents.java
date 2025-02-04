@@ -19,5 +19,6 @@ public class ModEvents {
         event.put(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainEntity.setAttributes());
         event.put(ModEntities.IRON_LEE.get(), IronLeeEntity.setAttributes());
         event.put(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionEntity.setAttributes());
+        event.put(ModEntities.IRON_SLYTHER.get(), IronSlytherEntity.setAttributes());
     }
 }

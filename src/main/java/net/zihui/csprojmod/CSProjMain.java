@@ -67,6 +67,7 @@ public class CSProjMain {
             EntityRenderers.register(ModEntities.SHIPWRECK_CAPTAIN.get(), ShipwreckCaptainRenderer::new);
             BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
             EntityRenderers.register(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionRenderer::new);
+            EntityRenderers.register(ModEntities.IRON_SLYTHER.get(), IronSlytherRenderer::new);
         }
     }
 
