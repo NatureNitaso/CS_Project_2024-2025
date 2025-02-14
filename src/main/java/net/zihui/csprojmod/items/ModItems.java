@@ -45,6 +45,10 @@ public class ModItems {
             () -> new ForgeSpawnEggItem(ModEntities.TIGER, 0xD57E36, 0x1D0D00,
                     new Item.Properties()));
 
+    public static final RegistryObject<Item> IRON_SLYTHER_SPAWN_EGG = ITEMS.register("iron_slyther_spawn_egg",
+            () -> new ForgeSpawnEggItem(ModEntities.IRON_SLYTHER, 0x8B8B8B, 0X6F563B,
+                    new Item.Properties()));
+
     // Registers all items in the Deferred Register to the Forge directory
     public static void register(IEventBus eventBus) {
         ITEMS.register(eventBus);

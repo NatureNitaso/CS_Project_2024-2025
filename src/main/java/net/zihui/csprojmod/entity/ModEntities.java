@@ -46,7 +46,7 @@ public class ModEntities {
     public static final RegistryObject<EntityType<IronSlytherEntity>> IRON_SLYTHER =
             ENTITY_TYPES.register("iron_slyther",
                     () -> EntityType.Builder.of(IronSlytherEntity::new, MobCategory.MISC)
-                            .sized(1.0f, 2.0f)
+                            .sized(2.0f, 2.5f)
                             .build(new ResourceLocation(CSProjMain.MOD_ID, "iron_slyther")
                                     .toString()));
 
