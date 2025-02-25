@@ -1,7 +1,5 @@
 package net.zihui.csprojmod.entity.custom;
 
-import net.minecraft.server.level.ServerBossEvent;
-import net.minecraft.world.BossEvent;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -12,9 +10,8 @@ import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
+import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.animal.goat.Goat;
-import net.minecraft.world.entity.boss.wither.WitherBoss;
 import net.minecraft.world.entity.npc.AbstractVillager;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
@@ -22,19 +19,25 @@ import net.minecraft.world.phys.Vec3;
 import net.zihui.csprojmod.entity.goal.LeapAtTargetGoal;
 import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 import software.bernie.geckolib.animatable.GeoEntity;
-import software.bernie.geckolib.core.animatable.GeoAnimatable;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
+import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
+
+import java.util.Objects;
 
 public class IronSlytherEntity extends IronGolem implements GeoEntity {
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
+    private int leapCd = 0;
+    private LivingEntity target;
+    private final LeapTypes leapTypes;
 
 
     public IronSlytherEntity(EntityType<? extends IronGolem> entityType, Level level) {
         super(entityType, level);
+        this.leapTypes = LeapTypes.MEDIUM;
     }
 
     @Override
@@ -42,10 +45,6 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
-        this.goalSelector.addGoal(1, new LeapAtTargetGoal(this, LeapTypes.EXTREME, 1000));
-
-        this.targetSelector.tickRunningGoals(true);
-
         // Adds targets to the said mob
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
@@ -117,9 +116,35 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
     }
+    public boolean canLeap(){
+        target = this.getTarget();
+        return this.target != null && leapCd == 0;
+    }
+
+    public void start() {
+        double dx = target.getX() - this.getX();
+        double dz = target.getZ() - this.getZ();
+        double distance = Math.sqrt(dx * dx + dz * dz);
+        if (distance > 0 && canLeap()) {
+            this.setDeltaMovement(
+                    (dx / distance) * leapTypes.getHorizontalStrength(),
+                    leapTypes.getVerticalStrength(),
+                    (dz / distance) * leapTypes.getHorizontalStrength());
+        }
+        leapCd = 1000;
+    }
+
 
     @Override
     public void tick() {
         super.tick();
+        this.canLeap();
+
+        if (leapCd > 0) {
+            leapCd--;
+        }
+        else if (leapCd == 0) {
+            start();
+        }
     }
 }

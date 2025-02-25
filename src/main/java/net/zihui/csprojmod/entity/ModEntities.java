@@ -11,6 +11,7 @@ import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.entity.custom.*;
 import net.zihui.csprojmod.entity.custom.stash.DrownedChampionEntity;
 import net.zihui.csprojmod.entity.custom.stash.ShipwreckCaptainEntity;
+import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 
 public class ModEntities {
     public static final DeferredRegister<EntityType<?>> ENTITY_TYPES =

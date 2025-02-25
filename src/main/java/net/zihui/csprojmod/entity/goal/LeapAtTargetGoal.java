@@ -69,4 +69,5 @@ public class LeapAtTargetGoal extends Goal {
     public boolean requiresUpdateEveryTick() {
         return true;
     }
+
 }
