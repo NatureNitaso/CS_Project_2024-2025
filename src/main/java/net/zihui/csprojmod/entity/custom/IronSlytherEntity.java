@@ -45,10 +45,11 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
+        this.goalSelector.addGoal(1, new LeapAtTargetGoal(this, LeapTypes.MEDIUM, 100));
         // Adds targets to the said mob
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
 
     }
@@ -115,36 +116,5 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
-    }
-    public boolean canLeap(){
-        target = this.getTarget();
-        return this.target != null && leapCd == 0;
-    }
-
-    public void start() {
-        double dx = target.getX() - this.getX();
-        double dz = target.getZ() - this.getZ();
-        double distance = Math.sqrt(dx * dx + dz * dz);
-        if (distance > 0 && canLeap()) {
-            this.setDeltaMovement(
-                    (dx / distance) * leapTypes.getHorizontalStrength(),
-                    leapTypes.getVerticalStrength(),
-                    (dz / distance) * leapTypes.getHorizontalStrength());
-        }
-        leapCd = 1000;
-    }
-
-
-    @Override
-    public void tick() {
-        super.tick();
-        this.canLeap();
-
-        if (leapCd > 0) {
-            leapCd--;
-        }
-        else if (leapCd == 0) {
-            start();
-        }
     }
 }

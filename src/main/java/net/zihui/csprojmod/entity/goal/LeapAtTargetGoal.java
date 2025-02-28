@@ -63,6 +63,9 @@ public class LeapAtTargetGoal extends Goal {
         {
             cdTicks--;
         }
+        else if (canUse()) {
+            start();
+        }
     }
 
     @Override
