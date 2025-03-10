@@ -8,69 +8,44 @@ import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 import java.util.EnumSet;
 
 public class LeapAtTargetGoal extends Goal {
-    private final Mob mob;
-    private LivingEntity target;
-    private final LeapTypes leapTypes;
-    private final int cooldownMax;
-    private int cdTicks = 0;
 
-    public LeapAtTargetGoal(Mob mob, LeapTypes leapTypes, int cd) {
+    private final Mob mob;
+    private final float jumpPower;
+    private int cdTicks = 0;
+    private LivingEntity target;
+
+    public LeapAtTargetGoal(Mob mob, float leapPower) {
         this.mob = mob;
-        this.leapTypes = leapTypes;
-        this.cooldownMax = cd;
+        this.jumpPower = leapPower;
     }
+
 
     @Override
     public boolean canUse() {
         this.target = this.mob.getTarget();
-        return this.target != null && this.mob.isOnGround() && (cdTicks == 0);
+        if (cdTicks > 0) {
+            cdTicks--;
+            return false;
+        }
+        return target != null;
     }
-
 
     @Override
     public void start() {
-        double dx = target.getX() - mob.getX(); // Grabs the distance between the target and the mob itself
-        double dz = target.getZ() - mob.getZ();
-        double distance = Math.sqrt(dx * dx + dz * dz);
+        if (canUse()) {
+            double dx = target.getX() - mob.getX();
+            double dz = target.getZ() - mob.getZ();
+            double distance = Math.sqrt(dx*dx+dz*dz);
 
-        if (distance > 0 && canUse()) {
-            mob.setDeltaMovement(
-                    (dx / distance) * leapTypes.getHorizontalStrength(),
-                    leapTypes.getVerticalStrength(),
-                    (dz / distance) * leapTypes.getHorizontalStrength()
-            );
-            cdTicks = cooldownMax;
+            if (distance > 0) {
+                mob.setDeltaMovement(
+                        (dx/distance) * jumpPower,
+                        1.5f,
+                        (dz/distance) * jumpPower
+                );
+                cdTicks = 600; // Makes cd 30 sec
+            }
+
         }
     }
-
-    public Mob getMob() {
-        return mob;
-    }
-
-    public LeapTypes getLeapTypes() {
-        return leapTypes;
-    }
-
-    public LivingEntity getTarget() {
-        return target;
-    }
-
-    @Override
-    public void tick() {
-        super.tick();
-
-        if ((cdTicks > 0))
-        {
-            cdTicks--;
-        }
-        else if (canUse()) {
-            start();
-        }
-    }
-
-    @Override
-    public boolean requiresUpdateEveryTick() {
-        return true;
-    }
-
 }

@@ -1,5 +1,6 @@
 package net.zihui.csprojmod.entity.custom;
 
+import net.minecraft.world.damagesource.DamageSource;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -17,6 +18,7 @@ import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.zihui.csprojmod.entity.goal.LeapAtTargetGoal;
+import net.zihui.csprojmod.entity.goal.RangedSmashAttackGoal;
 import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
@@ -45,13 +47,18 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
-        this.goalSelector.addGoal(1, new LeapAtTargetGoal(this, LeapTypes.MEDIUM, 100));
+        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, randomPower()));
+        this.goalSelector.addGoal(1, new RangedSmashAttackGoal(this, 100));
         // Adds targets to the said mob
         this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, true));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, false));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
 
+    }
+
+    public float randomPower() {
+        return (float) (Math.random() + 1);
     }
 
     @Override
@@ -61,7 +68,7 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         {
              // Power up launch on hit
             Vec3 motion = entity.getDeltaMovement();
-            entity.setDeltaMovement(motion.x, 2.0, motion.z);
+            entity.setDeltaMovement(motion.x, randomPower(), motion.z);
             entity.hurtMarked = true;
         }
         return flag;
@@ -116,5 +123,10 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
     @Override
     public AnimatableInstanceCache getAnimatableInstanceCache() {
         return cache;
+    }
+
+    @Override
+    public boolean causeFallDamage(float v, float v1, DamageSource damageSource) {
+        return super.causeFallDamage(v, v1, damageSource);
     }
 }
