@@ -24,7 +24,8 @@ public abstract class AbstractModdedGolem extends AbstractGolem {
         super.tick();
     }
 
-    public void specialAbility()
+    public abstract void specialAbility();
 
+    public abstract void performSpecialAttack();
 
 }

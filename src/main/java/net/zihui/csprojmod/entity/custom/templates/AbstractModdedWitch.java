@@ -14,4 +14,6 @@ public abstract class AbstractModdedWitch extends Witch {
     public void performRangedAttack(LivingEntity entity, float v) {
         super.performRangedAttack(entity, v);
     }
+
+
 }
