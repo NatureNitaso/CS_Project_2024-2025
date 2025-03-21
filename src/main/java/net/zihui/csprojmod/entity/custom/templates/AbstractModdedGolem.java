@@ -2,14 +2,15 @@ package net.zihui.csprojmod.entity.custom.templates;
 
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.Mob;
+import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.monster.Monster;
 import net.minecraft.world.level.Level;
 
 import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 
-public abstract class AbstractModdedMob extends Mob {
+public abstract class AbstractModdedGolem extends AbstractGolem {
 
-    protected AbstractModdedMob(EntityType<? extends Monster> type, Level level, LeapTypes leapTypes) {
+    protected AbstractModdedGolem(EntityType<? extends AbstractModdedGolem> type, Level level) {
         super(type, level);
     }
 
@@ -22,6 +23,8 @@ public abstract class AbstractModdedMob extends Mob {
     public void tick() {
         super.tick();
     }
+
+    public void specialAbility()
 
 
 }

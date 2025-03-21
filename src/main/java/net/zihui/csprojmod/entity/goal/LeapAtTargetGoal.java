@@ -13,39 +13,33 @@ public class LeapAtTargetGoal extends Goal {
     private final float jumpPower;
     private int cdTicks = 0;
     private LivingEntity target;
+    private final float leapPower;
 
-    public LeapAtTargetGoal(Mob mob, float leapPower) {
+    public LeapAtTargetGoal(Mob mob, float yPower, float xPower) {
         this.mob = mob;
-        this.jumpPower = leapPower;
+        this.jumpPower = yPower;
+        this.leapPower = xPower;
     }
 
 
     @Override
     public boolean canUse() {
         this.target = this.mob.getTarget();
+        boolean useable = cdTicks>0&&mob.isOnGround()&&target!=null;
         if (cdTicks > 0) {
             cdTicks--;
             return false;
         }
-        return target != null;
+        return useable;
     }
 
     @Override
     public void start() {
-        if (canUse()) {
-            double dx = target.getX() - mob.getX();
-            double dz = target.getZ() - mob.getZ();
-            double distance = Math.sqrt(dx*dx+dz*dz);
-
-            if (distance > 0) {
-                mob.setDeltaMovement(
-                        (dx/distance) * jumpPower,
-                        1.5f,
-                        (dz/distance) * jumpPower
-                );
-                cdTicks = 600; // Makes cd 30 sec
-            }
-
+        if (canUse()){
+            double dx = mob.getX() - target.getX();
+            double dz = mob.getZ() + target.getZ();
+            mob.setDeltaMovement((dx*dx), jumpPower, (dz*dz));
+            cdTicks = 200;
         }
     }
 }

@@ -47,10 +47,10 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
-        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, randomPower()));
+        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 1.5f, 1.25f));
         this.goalSelector.addGoal(1, new RangedSmashAttackGoal(this, 100));
         // Adds targets to the said mob
-        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
+//        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, false));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
@@ -77,13 +77,13 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
     public static AttributeSupplier setAttributes()
     {
         return IronGolem.createMobAttributes()
-                .add(Attributes.MAX_HEALTH, 120)
+                .add(Attributes.MAX_HEALTH, 150)
                 .add(Attributes.ARMOR, 10)
                 .add(Attributes.ARMOR_TOUGHNESS, 5)
                 .add(Attributes.ATTACK_KNOCKBACK, 200)
                 .add(Attributes.ATTACK_SPEED, 0.01f)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0.01)
+                .add(Attributes.MOVEMENT_SPEED, 0)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 10)
                 .build();
     }
@@ -125,8 +125,5 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         return cache;
     }
 
-    @Override
-    public boolean causeFallDamage(float v, float v1, DamageSource damageSource) {
-        return super.causeFallDamage(v, v1, damageSource);
-    }
+
 }
