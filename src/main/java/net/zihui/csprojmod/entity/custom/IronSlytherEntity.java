@@ -20,6 +20,7 @@ import net.minecraft.world.phys.Vec3;
 import net.zihui.csprojmod.entity.goal.LeapAtTargetGoal;
 import net.zihui.csprojmod.entity.goal.RangedSmashAttackGoal;
 import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
+import net.zihui.csprojmod.entity.goal.interfaces.SpecialMoveset;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
@@ -29,7 +30,7 @@ import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
 
 import java.util.Objects;
 
-public class IronSlytherEntity extends IronGolem implements GeoEntity {
+public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMoveset {
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private int leapCd = 0;
@@ -48,18 +49,42 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
         this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
         this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
         this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 1.5f, 1.25f));
-        this.goalSelector.addGoal(1, new RangedSmashAttackGoal(this, 100));
         // Adds targets to the said mob
 //        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
         this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, false));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
+    }
+
+    @Override
+    public void tick() {
+        if (getTarget() != null) {
+            this.target = this.getTarget();
+        }
 
     }
 
     public float randomPower() {
         return (float) (Math.random() + 1);
     }
+
+    @Override
+    public void specialAbility() {
+        double jump = this.getY() + 15;
+        if (this.onGround)
+        {
+            this.setDeltaMovement(1, 5, 1);
+        }
+    }
+
+    public LivingEntity getMobTarget() {
+        if (this.getTarget() != null) {
+            return this.getTarget();
+        }
+        return null;
+    }
+
+
 
     @Override
     public boolean doHurtTarget(Entity entity) {
@@ -83,7 +108,7 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
                 .add(Attributes.ATTACK_KNOCKBACK, 200)
                 .add(Attributes.ATTACK_SPEED, 0.01f)
                 .add(Attributes.ATTACK_DAMAGE, 5)
-                .add(Attributes.MOVEMENT_SPEED, 0)
+                .add(Attributes.MOVEMENT_SPEED, 0.2)
                 .add(Attributes.KNOCKBACK_RESISTANCE, 10)
                 .build();
     }
@@ -92,29 +117,29 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity {
     public void registerControllers(AnimatableManager.ControllerRegistrar controllerRegistrar) {
         controllerRegistrar.add(new AnimationController<>(this,
                 "controller", 0, this::predicate));
-        controllerRegistrar.add(new AnimationController<>(this,
-                "attackController", 0, this::attackPredicate));
+//        controllerRegistrar.add(new AnimationController<>(this,
+//                "attackController", 0, this::attackPredicate));
 
     }
 
-    private PlayState attackPredicate(AnimationState<IronSlytherEntity> state) {
-        if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED))
-        {
-            state.getController().forceAnimationReset();
-            state.setAnimation(RawAnimation.begin().then
-                    ("animation.iron_slyther.smash", Animation.LoopType.PLAY_ONCE));
-            this.swinging = false;
-        }
-        return PlayState.CONTINUE;
-    }
+//    private PlayState attackPredicate(AnimationState<IronSlytherEntity> state) {
+//        if (this.swinging && state.getController().getAnimationState().equals(AnimationController.State.STOPPED))
+//        {
+//            state.getController().forceAnimationReset();
+//            state.setAnimation(RawAnimation.begin().then
+//                    ("animation.iron_slyther.smash", Animation.LoopType.PLAY_ONCE));
+//            this.swinging = false;
+//        }
+//        return PlayState.CONTINUE;
+//    }
 
     private PlayState predicate(AnimationState<IronSlytherEntity> state) {
-        if (state.isMoving())
-        {
-            state.setAnimation(RawAnimation.begin().then
-                    ("animation.iron_slyther.move", Animation.LoopType.LOOP));
-            return PlayState.CONTINUE;
-        }
+//        if (state.isMoving())
+//        {
+//            state.setAnimation(RawAnimation.begin().then
+//                    ("animation.iron_slyther.move", Animation.LoopType.LOOP));
+//            return PlayState.CONTINUE;
+//        }
         state.setAnimation(RawAnimation.begin().then
                 ("animation.iron_slyther.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;
