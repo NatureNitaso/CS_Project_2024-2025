@@ -1,6 +1,8 @@
 package net.zihui.csprojmod.entity.custom;
 
 import net.minecraft.world.damagesource.DamageSource;
+import net.minecraft.world.effect.MobEffectInstance;
+import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
@@ -38,19 +40,20 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     public IronSlytherEntity(EntityType<? extends IronGolem> entityType, Level level) {
         super(entityType, level);
+        super.registerGoals();
     }
 
     @Override
     protected void registerGoals() {
-        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
-        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
-        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
-        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 1.5f, 1.25f));
-        // Adds targets to the said mob
+//        this.goalSelector.addGoal(5, new RandomLookAroundGoal(this));// Makes mob wander around
+//        this.goalSelector.addGoal(2, new WaterAvoidingRandomStrollGoal(this, 0.1f));
+//        this.goalSelector.addGoal(3, new MeleeAttackGoal(this, 20, true));
+//        this.goalSelector.addGoal(4, new LeapAtTargetGoal(this, 1.5f, 1.25f));
+//        // Adds targets to the said mob
 //        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
-        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
-        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
+//        this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
+//        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
+//        this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
     }
 
     public float randomPower() {
@@ -58,7 +61,27 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
     }
 
     @Override
+    public void tick() {
+        super.tick();
+        specialAbility();
+    }
+
+    @Override
     public void specialAbility() {
+        double maxHealth = this.getMaxHealth();
+        double hp = this.getHealth();
+        System.out.println("Checking special ability: HP = " + hp + "/" + maxHealth);
+        if (hp < maxHealth/2) {
+            this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300, 2));
+            this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 2));
+        }
+//        boolean hasTarget = this.getTarget() != null;
+//        if (hasTarget && this.isOnGround()){
+//            Vec3 leap = this.getDeltaMovement();
+//            Vec3 target = this.getTarget().getDeltaMovement();
+//
+//            this.setDeltaMovement(leap.x - target.x, leap.y + 5, leap.z - target.z);
+//        }
 
     }
 
