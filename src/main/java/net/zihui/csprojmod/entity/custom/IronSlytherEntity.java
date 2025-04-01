@@ -34,13 +34,10 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private int leapCd = 0;
-    private LivingEntity target;
-    private final LeapTypes leapTypes;
 
 
     public IronSlytherEntity(EntityType<? extends IronGolem> entityType, Level level) {
         super(entityType, level);
-        this.leapTypes = LeapTypes.MEDIUM;
     }
 
     @Override
@@ -52,16 +49,8 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
         // Adds targets to the said mob
 //        this.targetSelector.addGoal(3, new NearestAttackableTargetGoal<>(this, Player.class, true));
         this.targetSelector.addGoal(1, new NearestAttackableTargetGoal<>(this, AbstractVillager.class, false));
-        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, false));
+        this.targetSelector.addGoal(2, new NearestAttackableTargetGoal<>(this, IronGolem.class, true));
         this.targetSelector.addGoal(4, new NearestAttackableTargetGoal<>(this, Mob.class, false));
-    }
-
-    @Override
-    public void tick() {
-        if (getTarget() != null) {
-            this.target = this.getTarget();
-        }
-
     }
 
     public float randomPower() {
@@ -70,18 +59,7 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     @Override
     public void specialAbility() {
-        double jump = this.getY() + 15;
-        if (this.onGround)
-        {
-            this.setDeltaMovement(1, 5, 1);
-        }
-    }
 
-    public LivingEntity getMobTarget() {
-        if (this.getTarget() != null) {
-            return this.getTarget();
-        }
-        return null;
     }
 
 
@@ -134,12 +112,12 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 //    }
 
     private PlayState predicate(AnimationState<IronSlytherEntity> state) {
-//        if (state.isMoving())
-//        {
-//            state.setAnimation(RawAnimation.begin().then
-//                    ("animation.iron_slyther.move", Animation.LoopType.LOOP));
-//            return PlayState.CONTINUE;
-//        }
+        if (state.isMoving())
+        {
+            state.setAnimation(RawAnimation.begin().then
+                    ("animation.iron_slyther.move", Animation.LoopType.LOOP));
+            return PlayState.CONTINUE;
+        }
         state.setAnimation(RawAnimation.begin().then
                 ("animation.iron_slyther.idle", Animation.LoopType.LOOP));
         return PlayState.CONTINUE;

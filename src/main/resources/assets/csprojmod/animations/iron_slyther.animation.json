@@ -3,6 +3,9 @@
 	"animations": {
 		"animation.iron_slyther.idle": {
 			"loop": true
+		},
+		"animation.iron_slyther.move": {
+			"loop": true
 		}
 	},
 	"geckolib_format_version": 2
