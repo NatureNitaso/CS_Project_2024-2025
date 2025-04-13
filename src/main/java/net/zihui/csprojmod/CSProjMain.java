@@ -11,6 +11,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.event.lifecycle.FMLClientSetupEvent;
 import net.zihui.csprojmod.blocks.ModBlocks;
+import net.zihui.csprojmod.effects.ModEffects;
 import net.zihui.csprojmod.entity.ModBlockEntities;
 import net.zihui.csprojmod.entity.ModEntities;
 import net.zihui.csprojmod.entity.client.*;
@@ -47,6 +48,7 @@ public class CSProjMain {
         //Why I was having errors before winter break:
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
+        ModEffects.MOB_EFFECTS.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 

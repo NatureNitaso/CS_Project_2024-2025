@@ -1,5 +1,7 @@
 package net.zihui.csprojmod.event;
 
+import com.sun.jna.platform.dnd.DropHandler;
+import net.minecraft.data.loot.EntityLootSubProvider;
 import net.minecraftforge.event.entity.EntityAttributeCreationEvent;
 import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod;
