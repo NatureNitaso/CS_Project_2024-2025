@@ -20,6 +20,7 @@ import net.zihui.csprojmod.entity.client.stash.DrownedChampionRenderer;
 import net.zihui.csprojmod.entity.client.stash.ShipwreckCaptainRenderer;
 import net.zihui.csprojmod.init.ModCreativeTabs;
 import net.zihui.csprojmod.items.ModItems;
+import net.zihui.csprojmod.potions.ModPotions;
 import org.slf4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
@@ -48,7 +49,8 @@ public class CSProjMain {
         //Why I was having errors before winter break:
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModEffects.MOB_EFFECTS.register(modEventBus);
+        ModEffects.register(modEventBus);
+        ModPotions.register(modEventBus);
         MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 

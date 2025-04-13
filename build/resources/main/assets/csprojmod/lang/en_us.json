@@ -4,5 +4,10 @@
   "item.csprojmod.tiger_spawn_egg": "Tiger Spawn Egg",
   "item.csprojmod.iron_slyther_spawn_egg": "Iron Slyther Spawn Egg",
   "creativemodetab.csprojmod_tab": "CS Mod Tab",
-  "block.csprojmod.animated_block": "Animated Block"
+  "block.csprojmod.animated_block": "Animated Block",
+  "item.minecraft.potion.effect.eve_lotion": "Drinkable Eve Lotion (Creative Only)",
+  "item.minecraft.splash_potion.effect.eve_lotion": "Eve Lotion",
+  "item.minecraft.lingering_potion.effect.eve_lotion": "Lingering Eve Lotion (Creative Only)",
+  "item.minecraft.tipped_arrow.effect.eve_lotion": "Arrow Coated In Eve Lotion",
+  "effect.csprojmod.eve": "Eve"
 }
