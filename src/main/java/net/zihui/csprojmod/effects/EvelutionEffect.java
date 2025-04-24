@@ -33,7 +33,7 @@ public class EvelutionEffect extends MobEffect {
             IronSlytherEntity newMob = ModEntities.IRON_SLYTHER.get().create(lvl);
 
             assert newMob != null;
-            if (random >= 0.5){
+            if (random >= 0.9){
                 newMob.setXRot(livingEntity.getXRot());
                 newMob.setYRot(livingEntity.getYRot());
                 livingEntity.discard();

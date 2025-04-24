@@ -3,7 +3,6 @@ package net.zihui.csprojmod.items;
 
 // This is where we register all of our items into the game
 
-import net.minecraft.world.effect.MobEffect;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
@@ -16,7 +15,6 @@ import net.minecraftforge.registries.RegistryObject;
 import net.zihui.csprojmod.CSProjMain;
 import net.zihui.csprojmod.blocks.ModBlocks;
 import net.zihui.csprojmod.entity.ModEntities;
-import net.zihui.csprojmod.init.ModCreativeTabs;
 import net.zihui.csprojmod.items.custom.AnimatedBlockItem;
 
 public class ModItems {
@@ -49,7 +47,6 @@ public class ModItems {
     public static final RegistryObject<Item> IRON_SLYTHER_SPAWN_EGG = ITEMS.register("iron_slyther_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.IRON_SLYTHER, 0x8B8B8B, 0X6F563B,
                     new Item.Properties()));
-
 
     // Registers all items in the Deferred Register to the Forge directory
     public static void register(IEventBus eventBus) {

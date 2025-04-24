@@ -689,6 +689,9 @@
 		},
 		"animation.iron_slyther.idle": {
 			"loop": true
+		},
+		"animation.iron_slyther.slam": {
+			"animation_length": 1.9167
 		}
 	},
 	"geckolib_format_version": 2
