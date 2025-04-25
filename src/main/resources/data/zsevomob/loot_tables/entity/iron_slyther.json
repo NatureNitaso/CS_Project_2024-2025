@@ -32,13 +32,13 @@
               "add": false,
               "count": {
                 "type": "minecraft:uniform",
-                "max": 5.0,
+                "max": 10.0,
                 "min": 3.0
               },
               "function": "minecraft:set_count"
             }
           ],
-          "name": "minecraft:block_of_iron"
+          "name": "minecraft:iron_block"
         }
       ],
       "rolls": 1.0

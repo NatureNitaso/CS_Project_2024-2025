@@ -71,11 +71,7 @@ public class ZMobEvoMod {
             BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
             EntityRenderers.register(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionRenderer::new);
             EntityRenderers.register(ModEntities.IRON_SLYTHER.get(), IronSlytherRenderer::new);
-        }
-
-        @SubscribeEvent
-        public static void registerRenderer(EntityRenderersEvent.RegisterRenderers event) {
-            event.registerEntityRenderer(ModEntities.CUSTOM_THROWABLE_ENTITY.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.CUSTOM_THROWABLE_ENTITY.get(), ThrownItemRenderer::new);
         }
     }
 

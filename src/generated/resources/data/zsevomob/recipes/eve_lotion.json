@@ -1,0 +1,33 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "category": "misc",
+  "key": {
+    "A": {
+      "item": "minecraft:magma_block"
+    },
+    "B": {
+      "item": "minecraft:gold_block"
+    },
+    "C": {
+      "item": "minecraft:copper_block"
+    },
+    "D": {
+      "item": "minecraft:dragon_breath"
+    },
+    "E": {
+      "item": "minecraft:redstone_block"
+    },
+    "W": {
+      "item": "minecraft:waxed_copper_block"
+    }
+  },
+  "pattern": [
+    "ABC",
+    "EDE",
+    "WBA"
+  ],
+  "result": {
+    "item": "zsevomob:eve_lotion"
+  },
+  "show_notification": true
+}
