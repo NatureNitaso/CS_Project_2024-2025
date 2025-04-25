@@ -5,11 +5,11 @@ import net.minecraft.world.level.block.Block;
 import net.minecraftforge.client.model.generators.BlockStateProvider;
 import net.minecraftforge.common.data.ExistingFileHelper;
 import net.minecraftforge.registries.RegistryObject;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 
 public class ModBlockStateProvider extends BlockStateProvider {
     public ModBlockStateProvider(PackOutput output, ExistingFileHelper exFileHelper) {
-        super(output, CSProjMain.MOD_ID, exFileHelper);
+        super(output, ZMobEvoMod.MOD_ID, exFileHelper);
     }
 
     @Override

@@ -16,7 +16,7 @@
 //import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 //import net.minecraftforge.common.data.ExistingFileHelper;
 //import net.minecraftforge.registries.RegistryObject;
-//import net.zihui.csprojmod.CSProjMain;
+//import net.zihui.csprojmod.ZMobEvoMod;
 //import net.zihui.csprojmod.entity.ModEntities;
 //
 //import java.util.Arrays;

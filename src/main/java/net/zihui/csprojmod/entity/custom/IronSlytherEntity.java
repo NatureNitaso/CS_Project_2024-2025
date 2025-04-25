@@ -1,42 +1,29 @@
 package net.zihui.csprojmod.entity.custom;
 
-import net.minecraft.advancements.critereon.DamageSourcePredicate;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.damagesource.DamageSource;
-import net.minecraft.world.damagesource.DamageType;
-import net.minecraft.world.damagesource.DamageTypes;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.entity.Entity;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
 import net.minecraft.world.entity.ai.attributes.AttributeSupplier;
 import net.minecraft.world.entity.ai.attributes.Attributes;
 import net.minecraft.world.entity.ai.goal.MeleeAttackGoal;
 import net.minecraft.world.entity.ai.goal.RandomLookAroundGoal;
 import net.minecraft.world.entity.ai.goal.WaterAvoidingRandomStrollGoal;
 import net.minecraft.world.entity.ai.goal.target.NearestAttackableTargetGoal;
-import net.minecraft.world.entity.animal.AbstractGolem;
 import net.minecraft.world.entity.animal.IronGolem;
-import net.minecraft.world.entity.npc.AbstractVillager;
-import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
-import net.zihui.csprojmod.CSProjMain;
-import net.zihui.csprojmod.entity.goal.LeapAtTargetGoal;
-import net.zihui.csprojmod.entity.goal.RangedSmashAttackGoal;
-import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.entity.goal.interfaces.SpecialMoveset;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
-import net.zihui.csprojmod.entity.goal.enums.LeapTypes;
-
-import java.util.Objects;
 
 public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMoveset {
 
@@ -234,7 +221,7 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
     @Override
     protected ResourceLocation getDefaultLootTable() {
         System.out.println("[DEBUG] Iron Slyther loot table is being called!");
-        return new ResourceLocation(CSProjMain.MOD_ID, "entity/iron_slyther.json");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "entity/iron_slyther.json");
     }
 
     @Override

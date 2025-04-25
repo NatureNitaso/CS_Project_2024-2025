@@ -12,15 +12,16 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.blocks.ModBlocks;
 import net.zihui.csprojmod.entity.ModEntities;
 import net.zihui.csprojmod.items.custom.AnimatedBlockItem;
+import net.zihui.csprojmod.items.custom.CustomThrowableItem;
 
 public class ModItems {
     // Sets up register for deferred register method
     public static final DeferredRegister<Item> ITEMS =
-            DeferredRegister.create(ForgeRegistries.ITEMS, CSProjMain.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.ITEMS, ZMobEvoMod.MOD_ID);
 
 
     // Register first item
@@ -47,6 +48,9 @@ public class ModItems {
     public static final RegistryObject<Item> IRON_SLYTHER_SPAWN_EGG = ITEMS.register("iron_slyther_spawn_egg",
             () -> new ForgeSpawnEggItem(ModEntities.IRON_SLYTHER, 0x8B8B8B, 0X6F563B,
                     new Item.Properties()));
+
+    public static final RegistryObject<Item> EVE_LOTION = ITEMS.register("eve_lotion", () ->
+            new CustomThrowableItem(new Item.Properties().stacksTo(16)));
 
     // Registers all items in the Deferred Register to the Forge directory
     public static void register(IEventBus eventBus) {

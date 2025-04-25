@@ -1,9 +1,8 @@
 package net.zihui.csprojmod.entity.client;
 
-import net.minecraft.client.model.EntityModel;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.util.Mth;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.entity.custom.TigerEntity;
 import software.bernie.geckolib.constant.DataTickets;
 import software.bernie.geckolib.core.animatable.model.CoreGeoBone;
@@ -14,17 +13,17 @@ import software.bernie.geckolib.model.data.EntityModelData;
 public class TigerModel extends GeoModel<TigerEntity> {
     @Override
     public ResourceLocation getModelResource(TigerEntity tigerEntity) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "geo/tiger.geo.json");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "geo/tiger.geo.json");
     }
 
     @Override
     public ResourceLocation getTextureResource(TigerEntity tigerEntity) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "textures/entity/tiger.png");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "textures/entity/tiger.png");
     }
 
     @Override
     public ResourceLocation getAnimationResource(TigerEntity tigerEntity) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "animations/tiger.animation.json");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "animations/tiger.animation.json");
     }
 
     @Override

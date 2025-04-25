@@ -10,7 +10,7 @@ import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.blocks.entity.AnimatedBlock;
 import net.zihui.csprojmod.items.ModItems;
 
@@ -20,7 +20,7 @@ import java.util.function.Supplier;
 public class ModBlocks {
     // Makes the Deferred Registery to store the Modded blocks from my mod
     public static final DeferredRegister<Block> BLOCKS =
-            DeferredRegister.create(ForgeRegistries.BLOCKS, CSProjMain.MOD_ID);
+            DeferredRegister.create(ForgeRegistries.BLOCKS, ZMobEvoMod.MOD_ID);
 
     // We use BLOCKS.register here because this makes it so that only block is added and not the item
     public static final RegistryObject<Block> ANIMATED_BLOCK = BLOCKS.register("animated_block",

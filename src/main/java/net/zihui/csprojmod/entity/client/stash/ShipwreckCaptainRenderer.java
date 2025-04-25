@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.entity.custom.stash.ShipwreckCaptainEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -15,7 +15,7 @@ public class ShipwreckCaptainRenderer extends GeoEntityRenderer<ShipwreckCaptain
 
     @Override
     public ResourceLocation getTextureLocation(ShipwreckCaptainEntity animatable) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "textures/entity/shipwreck_captain.png");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "textures/entity/shipwreck_captain.png");
     }
 
     @Override

@@ -4,7 +4,7 @@ import com.mojang.blaze3d.vertex.PoseStack;
 import net.minecraft.client.renderer.MultiBufferSource;
 import net.minecraft.client.renderer.entity.EntityRendererProvider;
 import net.minecraft.resources.ResourceLocation;
-import net.zihui.csprojmod.CSProjMain;
+import net.zihui.csprojmod.ZMobEvoMod;
 import net.zihui.csprojmod.entity.custom.stash.DrownedChampionEntity;
 import software.bernie.geckolib.renderer.GeoEntityRenderer;
 
@@ -15,7 +15,7 @@ public class DrownedChampionRenderer extends GeoEntityRenderer<DrownedChampionEn
 
     @Override
     public ResourceLocation getTextureLocation(DrownedChampionEntity animatable) {
-        return new ResourceLocation(CSProjMain.MOD_ID, "textures/entity/drowned_champion.png");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "textures/entity/drowned_champion.png");
     }
 
     @Override

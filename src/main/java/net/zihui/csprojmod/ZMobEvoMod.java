@@ -3,9 +3,12 @@ package net.zihui.csprojmod;
 // imports up here //
 import com.mojang.logging.LogUtils;
 import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
+import net.minecraft.client.renderer.entity.EntityRenderer;
 import net.minecraft.client.renderer.entity.EntityRenderers;
-import net.minecraft.world.item.Items;
+import net.minecraft.client.renderer.entity.ThrownItemRenderer;
+import net.minecraft.world.item.alchemy.PotionBrewing;
 import net.minecraftforge.api.distmarker.Dist;
+import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -21,20 +24,19 @@ import net.zihui.csprojmod.entity.client.stash.DrownedChampionRenderer;
 import net.zihui.csprojmod.entity.client.stash.ShipwreckCaptainRenderer;
 import net.zihui.csprojmod.init.ModCreativeTabs;
 import net.zihui.csprojmod.items.ModItems;
-import net.zihui.csprojmod.potions.ModPotions;
 import org.slf4j.Logger;
 import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
 
-@Mod(CSProjMain.MOD_ID)
-public class CSProjMain {
+@Mod(ZMobEvoMod.MOD_ID)
+public class ZMobEvoMod {
 
-    public static final String MOD_ID = "csprojmod";
+    public static final String MOD_ID = "zsevomob";
     public static final Logger LOGGER = LogUtils.getLogger();
 
-    public CSProjMain() {
+    public ZMobEvoMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
 
         modEventBus.addListener(this::setup);
@@ -50,9 +52,7 @@ public class CSProjMain {
         //Why I was having errors before winter break:
         ModEntities.register(modEventBus);
         ModBlockEntities.register(modEventBus);
-        ModEffects.register(modEventBus);
-        ModPotions.register(modEventBus);
-        MinecraftForge.EVENT_BUS.register(this);
+        ModEffects.register(modEventBus);MinecraftForge.EVENT_BUS.register(this);
         modEventBus.addListener(this::addCreative);
 
 
@@ -74,6 +74,11 @@ public class CSProjMain {
             EntityRenderers.register(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionRenderer::new);
             EntityRenderers.register(ModEntities.IRON_SLYTHER.get(), IronSlytherRenderer::new);
         }
+
+        @SubscribeEvent
+        public static void registerRenderer(EntityRenderersEvent.RegisterRenderers event) {
+            event.registerEntityRenderer(ModEntities.CUSTOM_THROWABLE_ENTITY.get(), ThrownItemRenderer::new);
+        }
     }
 
     private void addCreative(CreativeModeTabEvent.BuildContents event) {
@@ -83,6 +88,7 @@ public class CSProjMain {
             event.accept(ModItems.ANIMATED_BLOCK_ITEM);
             event.accept(ModItems.TIGER_SPAWN_EGG);
             event.accept(ModItems.IRON_SLYTHER_SPAWN_EGG);
+            event.accept(ModItems.EVE_LOTION);
 
 
 
