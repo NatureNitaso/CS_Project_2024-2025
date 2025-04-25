@@ -1,0 +1,44 @@
+package net.zihui.zsevomob.blocks;
+
+
+import net.minecraft.world.item.BlockItem;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.material.Material;
+import net.minecraftforge.eventbus.api.IEventBus;
+import net.minecraftforge.registries.DeferredRegister;
+import net.minecraftforge.registries.ForgeRegistries;
+import net.minecraftforge.registries.RegistryObject;
+import net.zihui.zsevomob.ZMobEvoMod;
+import net.zihui.zsevomob.blocks.entity.AnimatedBlock;
+import net.zihui.zsevomob.items.ModItems;
+
+import java.util.function.Supplier;
+
+
+public class ModBlocks {
+    // Makes the Deferred Registery to store the Modded blocks from my mod
+    public static final DeferredRegister<Block> BLOCKS =
+            DeferredRegister.create(ForgeRegistries.BLOCKS, ZMobEvoMod.MOD_ID);
+
+    // We use BLOCKS.register here because this makes it so that only block is added and not the item
+    public static final RegistryObject<Block> ANIMATED_BLOCK = BLOCKS.register("animated_block",
+            () -> new AnimatedBlock(BlockBehaviour.Properties.of(Material.STONE).noCollission()));
+
+
+    private static <T extends Block> RegistryObject<T> registerBlock (String name, Supplier<T> block) {
+        RegistryObject<T> toReturn = BLOCKS.register(name, block);
+        registerBlockItem(name, toReturn);
+        return toReturn;
+    }
+
+    private static <T extends Block> RegistryObject<BlockItem> registerBlockItem (String name, RegistryObject<T> block) {
+        return ModItems.ITEMS.register(name, () -> new BlockItem(block.get(),
+                 new Item.Properties()));
+    }
+
+    public static void register(IEventBus eventBus) {
+        BLOCKS.register(eventBus);
+    }
+}

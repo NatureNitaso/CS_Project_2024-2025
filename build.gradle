@@ -7,7 +7,7 @@ plugins {
 version = '1.0'
 group = 'com.email.zihuilei001' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 base {
-    archivesName = 'csprojmod'
+    archivesName = 'zsevomob'
 }
 
 // Mojang ships Java 17 to end users in 1.18+, so your mod should target Java 17.
@@ -51,7 +51,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Comma-separated list of namespaces to load gametests from. Empty = all namespaces.
-            property 'forge.enabledGameTestNamespaces', 'csprojmod'
+            property 'forge.enabledGameTestNamespaces', 'zsevomob'
 
             mods {
                 csprojmod {
@@ -67,7 +67,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'csprojmod'
+            property 'forge.enabledGameTestNamespaces', 'zsevomob'
 
             mods {
                 csprojmod {
@@ -86,7 +86,7 @@ minecraft {
 
             property 'forge.logging.console.level', 'debug'
 
-            property 'forge.enabledGameTestNamespaces', 'csprojmod'
+            property 'forge.enabledGameTestNamespaces', 'zsevomob'
 
             mods {
                 csprojmod {
@@ -103,7 +103,7 @@ minecraft {
             property 'forge.logging.console.level', 'debug'
 
             // Specify the modid for data generation, where to output the resulting resource, and where to look for existing resources.
-            args '--mod', 'csprojmod', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
+            args '--mod', 'zsevomob', '--all', '--output', file('src/generated/resources/'), '--existing', file('src/main/resources/')
 
             mods {
                 csprojmod {
@@ -162,12 +162,12 @@ dependencies {
 jar {
     manifest {
         attributes([
-                "Specification-Title"     : "csprojmod",
-                "Specification-Vendor"    : "csprojmod",
+                "Specification-Title"     : "zsevomob",
+                "Specification-Vendor"    : "zsevomob",
                 "Specification-Version"   : "WIP", // We are version 1 of ourselves
                 "Implementation-Title"    : project.name,
                 "Implementation-Version"  : project.jar.archiveVersion,
-                "Implementation-Vendor"   : "csprojmod",
+                "Implementation-Vendor"   : "zsevomob",
                 "Implementation-Timestamp": new Date().format("yyyy-MM-dd'T'HH:mm:ssZ")
         ])
     }
