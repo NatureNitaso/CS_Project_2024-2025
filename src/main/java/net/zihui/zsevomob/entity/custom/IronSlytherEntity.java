@@ -115,7 +115,6 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
     public void specialAbility() {
         double maxHealth = this.getMaxHealth();
         double hp = this.getHealth();
-        System.out.println("Checking special ability: HP = " + hp + "/" + maxHealth);
         if (hp < maxHealth/2) {
             this.addEffect(new MobEffectInstance(MobEffects.DAMAGE_BOOST, 300, 2));
             this.addEffect(new MobEffectInstance(MobEffects.MOVEMENT_SPEED, 600, 2));
@@ -220,7 +219,6 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     @Override
     protected ResourceLocation getDefaultLootTable() {
-        System.out.println("[DEBUG] Iron Slyther loot table is being called!");
         return new ResourceLocation(ZMobEvoMod.MOD_ID, "entity/iron_slyther.json");
     }
 

@@ -6,7 +6,6 @@ import net.minecraft.client.renderer.blockentity.BlockEntityRenderers;
 import net.minecraft.client.renderer.entity.EntityRenderers;
 import net.minecraft.client.renderer.entity.ThrownItemRenderer;
 import net.minecraftforge.api.distmarker.Dist;
-import net.minecraftforge.client.event.EntityRenderersEvent;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.CreativeModeTabEvent;
 import net.minecraftforge.eventbus.api.IEventBus;
@@ -27,6 +26,8 @@ import net.minecraftforge.fml.common.Mod;
 import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
+
+import javax.swing.text.html.parser.Entity;
 
 @Mod(ZMobEvoMod.MOD_ID)
 public class ZMobEvoMod {
@@ -71,7 +72,7 @@ public class ZMobEvoMod {
             BlockEntityRenderers.register(ModBlockEntities.ANIMATED_BLOCK_ENTITY.get(), AnimatedBlockRenderer::new);
             EntityRenderers.register(ModEntities.DROWNED_CHAMPION.get(), DrownedChampionRenderer::new);
             EntityRenderers.register(ModEntities.IRON_SLYTHER.get(), IronSlytherRenderer::new);
-            EntityRenderers.register(ModEntities.CUSTOM_THROWABLE_ENTITY.get(), ThrownItemRenderer::new);
+            EntityRenderers.register(ModEntities.EVE_LOTION.get(), ThrownItemRenderer::new);
         }
     }
 
@@ -83,6 +84,7 @@ public class ZMobEvoMod {
             event.accept(ModItems.TIGER_SPAWN_EGG);
             event.accept(ModItems.IRON_SLYTHER_SPAWN_EGG);
             event.accept(ModItems.EVE_LOTION);
+            event.accept(ModItems.GOLEMS_FIST);
 
 
 

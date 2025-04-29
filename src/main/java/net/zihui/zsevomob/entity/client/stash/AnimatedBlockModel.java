@@ -2,7 +2,7 @@ package net.zihui.zsevomob.entity.client.stash;
 
 import net.minecraft.resources.ResourceLocation;
 import net.zihui.zsevomob.ZMobEvoMod;
-import net.zihui.zsevomob.entity.custom.stash.AnimatedBlockEntity;
+import net.zihui.zsevomob.entity.custom.AnimatedBlockEntity;
 import software.bernie.geckolib.model.GeoModel;
 
 public class AnimatedBlockModel extends GeoModel<AnimatedBlockEntity> {

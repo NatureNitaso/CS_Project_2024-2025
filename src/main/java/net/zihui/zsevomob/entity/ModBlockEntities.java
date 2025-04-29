@@ -7,7 +7,7 @@ import net.minecraftforge.registries.ForgeRegistries;
 import net.minecraftforge.registries.RegistryObject;
 import net.zihui.zsevomob.ZMobEvoMod;
 import net.zihui.zsevomob.blocks.ModBlocks;
-import net.zihui.zsevomob.entity.custom.stash.AnimatedBlockEntity;
+import net.zihui.zsevomob.entity.custom.AnimatedBlockEntity;
 
 public class ModBlockEntities {
     public static final DeferredRegister<BlockEntityType<?>> BLOCK_ENTITIES =

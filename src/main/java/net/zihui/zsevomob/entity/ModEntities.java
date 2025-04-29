@@ -3,6 +3,7 @@ package net.zihui.zsevomob.entity;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.entity.EntityType;
 import net.minecraft.world.entity.MobCategory;
+import net.minecraftforge.common.Tags;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
 import net.minecraftforge.registries.ForgeRegistries;
@@ -50,12 +51,14 @@ public class ModEntities {
                             .build(new ResourceLocation(ZMobEvoMod.MOD_ID, "iron_slyther")
                                     .toString()));
 
-    public static final RegistryObject<EntityType<CustomThrowableEntity>> CUSTOM_THROWABLE_ENTITY =
-            ENTITY_TYPES.register("custom_throwable", () ->
-                    EntityType.Builder.of(CustomThrowableEntity::new, MobCategory.MISC)
-                            .sized(.25F, .25F)
+    public static final RegistryObject<EntityType<EveLotion>> EVE_LOTION =
+            ENTITY_TYPES.register("eve_lotion",
+                    () -> EntityType.Builder.<EveLotion>of(EveLotion::new, MobCategory.MISC)
+                            .sized(0.25f, 0.25f)
+                            .clientTrackingRange(8)
+                            .updateInterval(10)
                             .build(new ResourceLocation(ZMobEvoMod.MOD_ID, "eve_lotion")
-                            .toString()));
+                                    .toString()));
 
     public static void register (IEventBus eventBus) {
         ENTITY_TYPES.register(eventBus);

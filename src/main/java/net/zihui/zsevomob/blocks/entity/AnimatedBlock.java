@@ -5,7 +5,7 @@ import net.minecraft.world.level.block.BaseEntityBlock;
 import net.minecraft.world.level.block.RenderShape;
 import net.minecraft.world.level.block.entity.BlockEntity;
 import net.minecraft.world.level.block.state.BlockState;
-import net.zihui.zsevomob.entity.custom.stash.AnimatedBlockEntity;
+import net.zihui.zsevomob.entity.custom.AnimatedBlockEntity;
 import org.jetbrains.annotations.Nullable;
 
 public class AnimatedBlock extends BaseEntityBlock {

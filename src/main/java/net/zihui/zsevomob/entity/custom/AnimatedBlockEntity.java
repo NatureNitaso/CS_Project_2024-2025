@@ -1,4 +1,4 @@
-package net.zihui.zsevomob.entity.custom.stash;
+package net.zihui.zsevomob.entity.custom;
 
 import net.minecraft.core.BlockPos;
 import net.minecraft.world.level.block.entity.BlockEntity;

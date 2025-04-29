@@ -7,6 +7,8 @@ import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
 import net.minecraft.world.item.Item;
+import net.minecraft.world.item.Items;
+import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -17,6 +19,7 @@ import net.zihui.zsevomob.blocks.ModBlocks;
 import net.zihui.zsevomob.entity.ModEntities;
 import net.zihui.zsevomob.items.custom.AnimatedBlockItem;
 import net.zihui.zsevomob.items.custom.CustomThrowableItem;
+import net.zihui.zsevomob.items.custom.GolemsFist;
 
 public class ModItems {
     // Sets up register for deferred register method
@@ -51,6 +54,9 @@ public class ModItems {
 
     public static final RegistryObject<Item> EVE_LOTION = ITEMS.register("eve_lotion", () ->
             new CustomThrowableItem(new Item.Properties().stacksTo(16)));
+
+    public static final RegistryObject<Item> GOLEMS_FIST = ITEMS.register("golems_fist",
+            () -> new GolemsFist(5, 1.2f));
 
     // Registers all items in the Deferred Register to the Forge directory
     public static void register(IEventBus eventBus) {
