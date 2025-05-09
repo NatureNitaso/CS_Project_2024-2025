@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "zsevomob:item/slyther_shoulderpads"
+  }
+}

@@ -6,9 +6,8 @@ package net.zihui.zsevomob.items;
 import net.minecraft.world.effect.MobEffectInstance;
 import net.minecraft.world.effect.MobEffects;
 import net.minecraft.world.food.FoodProperties;
+import net.minecraft.world.item.ArmorItem;
 import net.minecraft.world.item.Item;
-import net.minecraft.world.item.Items;
-import net.minecraft.world.item.Tiers;
 import net.minecraftforge.common.ForgeSpawnEggItem;
 import net.minecraftforge.eventbus.api.IEventBus;
 import net.minecraftforge.registries.DeferredRegister;
@@ -20,6 +19,7 @@ import net.zihui.zsevomob.entity.ModEntities;
 import net.zihui.zsevomob.items.custom.AnimatedBlockItem;
 import net.zihui.zsevomob.items.custom.CustomThrowableItem;
 import net.zihui.zsevomob.items.custom.GolemsFist;
+import net.zihui.zsevomob.items.custom.SlytherArmorItem;
 
 public class ModItems {
     // Sets up register for deferred register method
@@ -56,7 +56,16 @@ public class ModItems {
             new CustomThrowableItem(new Item.Properties().stacksTo(16)));
 
     public static final RegistryObject<Item> GOLEMS_FIST = ITEMS.register("golems_fist",
-            () -> new GolemsFist(5, 1.2f));
+            () -> new GolemsFist(5, 1.2f, new Item.Properties()));
+
+    public static final RegistryObject<Item> SLYTHER_HORN = ITEMS.register("slyther_horn",
+            () -> new Item(new Item.Properties()));
+
+    public static final RegistryObject<Item> SLYTHER_HELMET = ITEMS.register("slyther_helmet",
+            () -> new SlytherArmorItem(ModArmorMaterials.SLYTHER, ArmorItem.Type.HELMET, new Item.Properties()));
+
+    public static final RegistryObject<Item> SLYTHER_SHOULDERPADS = ITEMS.register("slyther_shoulderpads",
+            () -> new SlytherArmorItem(ModArmorMaterials.SLYTHER, ArmorItem.Type.CHESTPLATE, new Item.Properties()));
 
     // Registers all items in the Deferred Register to the Forge directory
     public static void register(IEventBus eventBus) {

@@ -62,4 +62,6 @@ public class AnimatedBlockItem extends BlockItem implements GeoItem {
     public double getTick(Object itemStack) {
         return RenderUtils.getCurrentSystemTick();
     }
+
+
 }

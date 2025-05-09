@@ -6,5 +6,9 @@
   "creativemodetab.zsevomob_tab": "Zs Evo Mob Mod",
   "block.zsevomob.animated_block": "Animated Block",
   "effect.zsevomob.eve": "Eve",
-  "item.zsevomob.eve_lotion": "Eve Lotion"
+  "item.zsevomob.eve_lotion": "Eve Lotion",
+  "item.zsevomob.golems_fist": "Slyther's Fist",
+  "item.zsevomob.slyther_horn": "Slyther Horn",
+  "item.zsevomob.slyther_shoulderpads": "Slyther Shoulder Armor",
+  "item.zsevomob.slyther_helmet": "Slyther Helmet"
 }

@@ -18,14 +18,15 @@ import net.minecraft.world.item.Items;
 import net.minecraft.world.level.Level;
 import net.minecraft.world.phys.Vec3;
 import net.zihui.zsevomob.ZMobEvoMod;
-import net.zihui.zsevomob.entity.goal.interfaces.SpecialMoveset;
+import net.zihui.zsevomob.entity.goal.interfaces.SpecialAbility;
+import net.zihui.zsevomob.items.ModItems;
 import software.bernie.geckolib.animatable.GeoEntity;
 import software.bernie.geckolib.core.animatable.instance.AnimatableInstanceCache;
 import software.bernie.geckolib.core.animatable.instance.SingletonAnimatableInstanceCache;
 import software.bernie.geckolib.core.animation.*;
 import software.bernie.geckolib.core.object.PlayState;
 
-public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMoveset {
+public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialAbility {
 
     private AnimatableInstanceCache cache = new SingletonAnimatableInstanceCache(this);
     private int cD;
@@ -174,7 +175,7 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     @Override
     public void specialAttack(LivingEntity entity) {
-        SpecialMoveset.super.specialAttack(entity);
+        SpecialAbility.super.specialAttack(entity);
 
         double dx = target.getX() - this.getX(); // gives the horizontal difference on the x-axis
         double dz = target.getZ() - this.getZ(); // gives the horizontal difference on the z-axis
@@ -219,22 +220,23 @@ public class IronSlytherEntity extends IronGolem implements GeoEntity, SpecialMo
 
     @Override
     protected ResourceLocation getDefaultLootTable() {
-        return new ResourceLocation(ZMobEvoMod.MOD_ID, "entity/iron_slyther.json");
+        return new ResourceLocation(ZMobEvoMod.MOD_ID, "loot_tables/entity/iron_slyther.json");
     }
 
     @Override
-    protected void dropCustomDeathLoot(DamageSource damageSource, int aVoid, boolean b) {
-        super.dropCustomDeathLoot(damageSource, aVoid, b);
+    protected void dropCustomDeathLoot(DamageSource source, int val, boolean bool) {
+        super.dropCustomDeathLoot(source, val, bool);
+        double random = Math.random() * 9 + 1;
+        double random2 = Math.random();
 
-        int amount = 3 + this.random.nextInt(7);
-
-        for (int i = 0; i < amount; i++) {
-            this.spawnAtLocation(Items.IRON_BLOCK.asItem());
+        for (int i = 0; i < random; i++) {
+            this.spawnAtLocation(Items.IRON_BLOCK);
         }
-    }
-
-    @Override
-    protected void dropExperience() {
-        super.dropExperience();
+        if (random2 >= 0.89) {
+            this.spawnAtLocation(ModItems.GOLEMS_FIST.get());
+            if (random2 >= 0.95) {
+                this.spawnAtLocation(ModItems.SLYTHER_HORN.get());
+            }
+        }
     }
 }

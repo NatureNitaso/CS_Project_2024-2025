@@ -19,7 +19,10 @@ public class ModItemModelProvider extends ItemModelProvider {
     protected void registerModels() {
         withExistingParent(ModItems.TIGER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
         withExistingParent(ModItems.IRON_SLYTHER_SPAWN_EGG.getId().getPath(), mcLoc("item/template_spawn_egg"));
+        withExistingParent(ModItems.SLYTHER_HORN.getId().getPath(), mcLoc("item/goat_horn"));
 
+        simpleItem(ModItems.SLYTHER_HELMET);
+        simpleItem(ModItems.SLYTHER_SHOULDERPADS);
 
     }
 

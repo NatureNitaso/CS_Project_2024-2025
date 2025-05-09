@@ -27,8 +27,6 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import software.bernie.geckolib.GeckoLib;
 
-import javax.swing.text.html.parser.Entity;
-
 @Mod(ZMobEvoMod.MOD_ID)
 public class ZMobEvoMod {
 
@@ -85,6 +83,9 @@ public class ZMobEvoMod {
             event.accept(ModItems.IRON_SLYTHER_SPAWN_EGG);
             event.accept(ModItems.EVE_LOTION);
             event.accept(ModItems.GOLEMS_FIST);
+            event.accept(ModItems.SLYTHER_HORN);
+            event.accept(ModItems.SLYTHER_HELMET);
+            event.accept(ModItems.SLYTHER_SHOULDERPADS);
 
 
 
